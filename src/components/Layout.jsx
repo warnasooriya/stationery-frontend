@@ -117,7 +117,7 @@ export default function Layout({ children }) {
           </div>
         </div>
 
-        <div className="flex-1 space-y-6 overflow-auto px-2 pb-6">
+        <div className="flex-1 space-y-6 overflow-y-auto px-2 pb-6">
           <Section title="Overview">
             <SideNavLink to="/" label="Dashboard" icon="dashboard" />
           </Section>
@@ -141,19 +141,15 @@ export default function Layout({ children }) {
             <SideNavLink to="/logs/issuances" label="Issuances" icon="reports" />
           </Section>
         </div>
-
-        <div className="border-t border-white/15 px-4 py-4 text-xs text-white/70">
-          .
-        </div>
       </div>
     ),
     []
   );
 
   return (
-    <div className="min-h-full bg-ui-bg">
-      <div className="flex min-h-full">
-        <aside className="hidden w-72 flex-col bg-brand-900 md:flex">
+    <div className="h-screen overflow-hidden bg-ui-bg">
+      <div className="flex h-screen overflow-hidden">
+        <aside className="hidden h-screen w-72 flex-col bg-brand-900 md:flex">
           {nav}
         </aside>
 
@@ -166,8 +162,8 @@ export default function Layout({ children }) {
           </div>
         ) : null}
 
-        <div className="flex min-w-0 flex-1 flex-col">
-          <header className="sticky top-0 z-10 border-b border-brand-900 bg-brand-900">
+        <div className="flex min-w-0 flex-1 flex-col overflow-hidden">
+          <header className="shrink-0 border-b border-brand-900 bg-brand-900">
             <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3">
               <div className="flex items-center gap-3">
                 <button
@@ -185,7 +181,16 @@ export default function Layout({ children }) {
             </div>
           </header>
 
-          <main className="mx-auto min-w-0 max-w-7xl flex-1 px-4 py-6">{children}</main>
+          <div className="flex-1 overflow-y-auto">
+            <main className="mx-auto min-w-0 max-w-7xl px-4 py-6">{children}</main>
+          </div>
+
+          <footer className="shrink-0 border-t border-ui-border bg-white">
+            <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 text-xs text-ui-muted">
+              <div>Office Stationery Inventory Tracking System</div>
+              <div>No pricing, valuation, or costs stored in this system.</div>
+            </div>
+          </footer>
         </div>
       </div>
     </div>
